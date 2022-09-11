@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.war
+*.ear
+.idea
+.allure
+allure-results
+*.iml
+target
+build
+*.jar
+*.class
+out
+
+/.gradle/
