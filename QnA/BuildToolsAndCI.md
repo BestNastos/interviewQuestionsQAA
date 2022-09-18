@@ -180,6 +180,9 @@ Kubernetes и Docker работают сообща.
 _**Kubernetes**_ — ПО для оркестровки контейнеризированных приложений: 
 их развёртывания, масштабирования и координации в условиях кластера.
 
+_**Кластер**_  - Kubernetes cluster состоит из набор машин, так называемые 
+узлы, которые запускают контейнеризированные приложения.
+
 ### Какими Docker-командами вам приходилось пользоваться?
 `docker pull` - выгрузка образа  <br />
 `docker push` - загрузка образа <br />
@@ -191,5 +194,21 @@ _**Kubernetes**_ — ПО для оркестровки контейнеризи
 `docker rm` - удаление контейнера<br />
 `docker container prune` - удаление всех контейнеров <br />
 `docker rmi` - удаление образа <br />
+
+### Какими командами Git вы пользовались чаще всего
+
+git init <br />
+git add<br />
+git commit<br />
+git push<br />
+git pull<br />
+git rebase<br />
+git reset<br />
+git revert<br />
+git cherry-pick<br />
+git checkout<br />
+git branch <br />
+git stash<br />
+git merge<br />
 
 
