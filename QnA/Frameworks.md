@@ -1,3 +1,103 @@
+# Frameworks
+
+### 1. Что вы знаете о TestNG?
+TestNG - бесплатный фреймворк для тестирования. 
+
+Предоставляет:
+- ассерты
+- многопоточность 
+- дата провайдеры 
+- аннотации
+
+**Ассерты**:
+
+    Assert.assertEquals(actual, expected, message);
+    Assert.assertNotEquals(actual, expected, message);
+    Assert.assertNotNull(object, message);
+    Assert.assertNull(object, message);
+    Assert.assertFalse(condition, message);
+    Assert.assertTrue(condition, message);
+    Assert.assertSame(object, object, message);
+    Assert.assertNotSame(object, object, message);
+    Assert.assertEqualsNoOrder(array, array, message);
+    // etc.
+
+**Soft Assert vs Hard Assert:**
+
+`SoftAssert` требует создания объекта. Тест не падает сразу,
+если софт ассерт не прошел. Тест доходит до конца и только после вызова
+метода `assertAll()` падает, если есть хотябы 1 непрошедший ассерт.
+
+
+    SoftAssert softAssert = new SoftAssert();
+    softAssert.assertEquals(actual, expected, message);
+    softAssert.assertNull(object, message);
+    softAssert.assertAll();
+
+**TestNG vs JUnit:** 
+
+В JUnit нельзя группировать тесты без помощи доп. тулов.
+
+В JUnit нет dependsOn (но, с другой стороны, есть @Order).
+
+**Аннотации:**
+
+Аннотации TestNG ставятся над методами. 
+
+`@Test` - данная аннотация ставится над самим тестом. 
+Может иметь следующие параметры: <br />
+`groups`<br />
+`enabled`<br /> 
+`dependsOnGroups` / `dependsOnMethods`<br />
+`invocationCount` & `threadPoolSize`<br />
+`dataProvider`&`DataProvideClass`<br /> 
+`retryAnalyzer` - для использования этого параметра 
+нужно имплементировать `IRetryAnalyzer` )<br />
+
+Следующие аннотации указывают на очередность выполнения методов:
+`@BeforeGroups`  <br /> 
+`@BeforeClass` <br />
+`@BeforeTest` - before all methods within <test> tag, specified in testng.xml<br />
+`@BeforeMethod` - before each test<br />
+`@BeforeSuite` - before whole test run once<br />
+
+
+`@DataProvider`(parallel по количеству подмассивов)<br />
+`@Parameters`(parameter name from xml)<br />
+
+**Дата провайдеры:** 
+Это - способ параметризовать тестовый метод. 
+Дата провайдеры - методы, возвращающие двумерный массив, 
+каждый подмассив которого подается в виде параметров 
+соответствующему тестовому методу. Помечаются соответствующей 
+аннотацией:
+
+    @DataProvider
+    private Object[][] simpleDataProvider(){
+        return new Object[][]{
+                         {7, "hello"},
+                         {9, "world"}
+        };
+    }
+
+
+    @Test(dataProvider = "simpleDataProvider")
+    public void simpleTest(int i, String str) {
+        System.out.println("int = " + i + "\n" + "String = " +str);
+    }
+
+
+TestNG XML - конфигурационный файл, который определяет 
+test suite, в котором указывется тэг, по которому 
+будут запускаться те или иные группы тестов, там же 
+можно передавать параметры в тест или делать параллельный запуск.
+
+Параллельный запуск тестов. Если тесты с дата провайдером, то parallel=true можно указать в аннотации DataProvider, либо же к аннотации @Test вместе с invokationCount и threadPoolSize  или в конфигурационном файле (by methods, threadcount).
+
+**Исключения testng:** 
+
+При ошибке валидации кидает джавовый `java.lang.AssertionError`.
+
 ###### Что такое Cucumber и Gherkin?
 
 Cucumber & Gherkin notation. Cucumber это инструмент для написания автотестов.
@@ -13,7 +113,7 @@ Cucumber & Gherkin notation. Cucumber это инструмент для нап�
 Запускать через runner или через testng.xml где прописан путь к раннеру.
 Аннотация @Test не используется.
 
-### Что вы знаете о TestRail?
+### 2. Что вы знаете о TestRail?
 TestRail - инструмент для управления тестированием ПО.
 
 Позволяет:

@@ -1,6 +1,6 @@
 # Selenium Q&A
 
-### 1. Что такое Selenium?
+### 1. Что такое Selenium? 
 
 **_Selenium_** - фреймворк для тестирования web UI. 
 Поддерживает много языков (Java, Perl, Python, C#, Ruby, Groovy, JavaScript), 
